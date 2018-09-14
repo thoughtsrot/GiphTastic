@@ -36,6 +36,8 @@ $("button").on("click", function() {
 
   .then(function(giphyResponse) {
 
+    $("#giphDump").empty();
+
     var results = giphyResponse.data;
 
     console.log(results);
@@ -43,8 +45,6 @@ $("button").on("click", function() {
     for ( i = 0; i<results.length; i++) {
 
       if (results[i].rating !=="r") {
-
-        $("#giphDump").empty();
 
         var resultDiv = $("<div class='giph'>");
 
@@ -54,7 +54,7 @@ $("button").on("click", function() {
 
         var giphImage = $("<img>");
         // set default src to still image, then toggle with on click event
-        giphImage.attr("src", results[i].images.fixed_height.url)
+        giphImage.attr("src", results[i].images.fixed_height.url);
         // add attributes for managing gif state. To be used for "pausing and playing" gif on click
         // .attr("data-pause", results[i].images.)
         // .attr("data-play", results[i].images.fixed_height.url)
@@ -67,6 +67,10 @@ $("button").on("click", function() {
       }
 
     }
+
+    // for buttons that are dynamically created: $(document).on("click", "#btn", function(event) {
+      // $(this)
+    // }
 
   });
 
