@@ -11,7 +11,7 @@ var buttonDiv = $("#button-box");
 
 for ( i = 0; i < nhlArr.length; i++) {
 
-  var myButton = $("<button class='btn-success m-1'>");
+  var myButton = $("<button class='btn btn-success m-1'>");
 
   myButton.text(nhlArr[i]);
 
@@ -19,6 +19,8 @@ for ( i = 0; i < nhlArr.length; i++) {
 
 }
 }
+
+$(document).ready(function() {
 
 renderButtons()
 
@@ -46,19 +48,23 @@ $("button").on("click", function() {
 
       if (results[i].rating !=="r") {
 
-        var resultDiv = $("<div class='giph'>");
+        var resultDiv = $("<div class='col-12 col-md-9 giph'>");
 
         var rating = results[i].rating;
 
         var giphRating = $("<p>").text("Rating: " + rating);
 
-        var giphImage = $("<img>");
+        var giphImage = $("<img id='dagiphs'>");
         // set default src to still image, then toggle with on click event
-        giphImage.attr("src", results[i].images.fixed_height.url);
+        var stillImage = results[i].images.fixed_height_still.url;
+
+        var animateImage = results[i].images.fixed_height.url;
+
+        giphImage.attr("src", stillImage)
         // add attributes for managing gif state. To be used for "pausing and playing" gif on click
-        // .attr("data-pause", results[i].images.)
-        // .attr("data-play", results[i].images.fixed_height.url)
-        // .attr("data-state", "still")
+        .attr("data-pause", stillImage)
+        .attr("data-play", animateImage)
+        .attr("data-state", "still")
 
         resultDiv.append(giphRating, giphImage);
       
@@ -75,3 +81,5 @@ $("button").on("click", function() {
   });
 
 });
+
+})
