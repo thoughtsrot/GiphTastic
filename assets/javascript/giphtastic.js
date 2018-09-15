@@ -100,6 +100,18 @@ $("button").on("click", function() {
 
       }
 
+    });
+
+    $("#add-new").on("click", function (event) {
+
+      event.preventDefault();
+
+      var newButton = $("#add-button").val().trim();
+      console.log(newButton);
+      nhlArr.push(newButton);
+      console.log(nhlArr);
+      renderButtons();
+
     })
 
   });
