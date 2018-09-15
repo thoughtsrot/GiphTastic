@@ -64,7 +64,7 @@ $("button").on("click", function() {
         // add attributes for managing gif state. To be used for "pausing and playing" gif on click
         .attr("data-pause", stillImage)
         .attr("data-play", animateImage)
-        .attr("data-state", "still")
+        .attr("data-state", "pause")
 
         resultDiv.append(giphRating, giphImage);
       
@@ -77,6 +77,30 @@ $("button").on("click", function() {
     // for buttons that are dynamically created: $(document).on("click", "#btn", function(event) {
       // $(this)
     // }
+    $(document).on("click", "#dagiphs", function(event) {
+
+      event.preventDefault
+
+      var giphState = $(this).attr("data-state");
+      var pauseURL = $(this).attr("data-pause");
+      var playURL = $(this).attr("data-play");
+      
+
+      if (giphState === "pause") {
+
+        $(this).attr("src", playURL);
+        $(this).attr("data-state", "play");
+        
+
+      } else {
+
+        $(this).attr("src", pauseURL);
+        $(this).attr("data-state", "pause");
+      
+
+      }
+
+    })
 
   });
 
