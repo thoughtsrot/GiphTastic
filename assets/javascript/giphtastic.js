@@ -11,7 +11,7 @@ var buttonDiv = $("#button-box");
 
 for ( i = 0; i < nhlArr.length; i++) {
 
-  var myButton = $("<button class='btn btn-success m-1'>");
+  var myButton = $("<button class='btn btn-warning m-1' style='background-color: peru; color: white'>");
 
   myButton.text(nhlArr[i]);
 
@@ -75,11 +75,11 @@ $("button").on("click", function() {
     }
 
     // for buttons that are dynamically created: $(document).on("click", "#btn", function(event) {
-      // $(this)
+      // $(this)...
     // }
     $(document).on("click", "#dagiphs", function(event) {
 
-      event.preventDefault
+      event.preventDefault();
 
       var giphState = $(this).attr("data-state");
       var pauseURL = $(this).attr("data-pause");
